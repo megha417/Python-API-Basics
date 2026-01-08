@@ -11,10 +11,13 @@ We'll use JSONPlaceholder - a free fake API for testing.
 import requests
 
 # Step 1: Define the API URL
-url = "https://jsonplaceholder.typicode.com/posts/1"
+url = "https://jsonplaceholder.typicode.com/posts/999"
+
 
 # Step 2: Make a GET request
 response = requests.get(url)
+print(type(response))
+print(response)
 
 # Step 3: Print the response
 print("=== Basic API Request ===\n")

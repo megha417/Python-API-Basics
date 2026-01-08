@@ -11,10 +11,9 @@ Learn:
 
 import requests
 
-print("=== Understanding Status Codes ===\n")
-
 # Example 1: Successful request (200 OK)
 print("--- Example 1: Valid Request ---")
+
 url_valid = "https://jsonplaceholder.typicode.com/posts/1"
 response = requests.get(url_valid)
 
@@ -89,3 +88,40 @@ for code, meaning in status_codes.items():
 #
 # Exercise 3: Count how many comments are on post ID 1
 #             URL: https://jsonplaceholder.typicode.com/posts/1/comments
+
+print("=== Exercise 1 ===")
+
+url = "https://jsonplaceholder.typicode.com/users/5"
+response = requests.get(url)
+
+if response.status_code == 200:
+    data = response.json()
+    print("Phone Number:", data['phone'])
+else:
+    print("User not found!")
+
+print("=== Exercise 2: Check Resource Exists ===")
+
+url = "https://jsonplaceholder.typicode.com/posts/1"
+response = requests.get(url)
+
+print("Status Code:", response.status_code)
+
+if response.status_code == 200:
+    data = response.json()
+    print("Data:")
+    print(data)
+else:
+    print("Resource not found!")
+
+
+print("=== Exercise 3 ===")
+
+url = "https://jsonplaceholder.typicode.com/posts/1/comments"
+response = requests.get(url)
+
+if response.status_code == 200:
+    comments = response.json()
+    print("Number of comments on post 1:", len(comments))
+else:
+    print("Comments not found!")
