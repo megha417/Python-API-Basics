@@ -26,6 +26,9 @@ CITIES = {
     "london": (51.5074, -0.1278),
     "tokyo": (35.6762, 139.6503),
     "sydney": (-33.8688, 151.2093),
+    "pune": (18.5204, 73.8567),
+    "jaipur": (26.9124, 75.7873),
+    "ahmedabad": (23.0225, 72.5714),
 }
 
 # Popular cryptocurrencies
@@ -182,6 +185,23 @@ def display_top_cryptos():
         print(f"  {coin['rank']:<6}{coin['name']:<15}${usd['price']:>12,.2f}  {change_str}")
 
     print(f"{'=' * 55}")
+def create_post():
+    """Exercise 3: POST request example."""
+    url = "https://jsonplaceholder.typicode.com/posts"
+
+    payload = {
+        "title": "My First API Post",
+        "body": "This post is created using Python requests",
+        "userId": 1
+    }
+
+    try:
+        response = requests.post(url, json=payload, timeout=10)
+        response.raise_for_status()
+        print("\nPost created successfully!")
+        print(response.json())
+    except requests.RequestException as e:
+        print(f"Error creating post: {e}")
 
 
 def dashboard():
@@ -197,9 +217,11 @@ def dashboard():
         print("  2. Check Crypto Price")
         print("  3. View Top 5 Cryptos")
         print("  4. Quick Dashboard (Delhi + Bitcoin)")
-        print("  5. Exit")
+        print("  5. Create a POST Request")
+        print("  6. Exit")
 
-        choice = input("\nSelect (1-5): ").strip()
+
+        choice = input("\nSelect (1-6): ").strip()
 
         if choice == "1":
             print(f"\nAvailable: {', '.join(CITIES.keys())}")
@@ -219,6 +241,9 @@ def dashboard():
             display_crypto("bitcoin")
 
         elif choice == "5":
+            create_post()
+
+        elif choice == "6":
             print("\nGoodbye! Happy coding!")
             break
 
