@@ -156,3 +156,4 @@ if __name__ == "__main__":
 # Exercise 3: Add logging to track all API requests
 #             import logging
 #             logging.basicConfig(level=logging.INFO)
+
